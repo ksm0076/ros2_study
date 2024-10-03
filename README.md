@@ -29,8 +29,6 @@ ros2 interface show <type_name>
 **명령**
 ```
 ros2 topic pub <topic_name> <type_name> <argument>
-
-<topic_name> <type_name> <argument>
 ```
 
 ## 3. 서비스
