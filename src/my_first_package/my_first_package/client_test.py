@@ -17,7 +17,7 @@ class ClientTest(Node):
     def callback_service(self):        
         self.req_teleport.x = float(random.randrange(1,8))
         self.teleport.call_async(self.req_teleport)
-        print("Client Test GOGO!")
+        print("Client Test")
     
 def main():
     rp.init()

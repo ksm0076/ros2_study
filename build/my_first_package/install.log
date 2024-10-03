@@ -27,7 +27,6 @@
 /home/ksm/ros2_study/install/my_first_package/lib/python3.10/site-packages/my_first_package-0.0.0-py3.10.egg-info/PKG-INFO
 /home/ksm/ros2_study/install/my_first_package/lib/python3.10/site-packages/my_first_package-0.0.0-py3.10.egg-info/entry_points.txt
 /home/ksm/ros2_study/install/my_first_package/lib/python3.10/site-packages/my_first_package-0.0.0-py3.10.egg-info/zip-safe
-/home/ksm/ros2_study/install/my_first_package/lib/my_first_package/client_test
 /home/ksm/ros2_study/install/my_first_package/lib/my_first_package/dist_turtle_action_serverr
 /home/ksm/ros2_study/install/my_first_package/lib/my_first_package/move_turtle_action_server
 /home/ksm/ros2_study/install/my_first_package/lib/my_first_package/my_first_node
@@ -36,3 +35,4 @@
 /home/ksm/ros2_study/install/my_first_package/lib/my_first_package/my_subscriber
 /home/ksm/ros2_study/install/my_first_package/lib/my_first_package/n_spawn_server
 /home/ksm/ros2_study/install/my_first_package/lib/my_first_package/turtle_cmd_and_pose
+/home/ksm/ros2_study/install/my_first_package/lib/my_first_package/user_defined_cmd
