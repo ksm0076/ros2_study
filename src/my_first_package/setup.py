@@ -27,7 +27,8 @@ setup(
             'my_service_server = my_first_package.my_service_server:main',
             'n_spawn_server = my_first_package.n_spawn:main',
             'dist_turtle_action_serverr = my_first_package.my_action_server:main',
-            'move_turtle_action_server = my_first_package.move_turtle:main'
+            'move_turtle_action_server = my_first_package.move_turtle:main',
+            'client_test = my_first_package.client_test:main',
         ],
     },
 )

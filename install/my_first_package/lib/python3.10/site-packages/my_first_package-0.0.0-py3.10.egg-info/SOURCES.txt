@@ -9,6 +9,7 @@ setup.py
 ../../build/my_first_package/my_first_package.egg-info/top_level.txt
 ../../build/my_first_package/my_first_package.egg-info/zip-safe
 my_first_package/__init__.py
+my_first_package/client_test.py
 my_first_package/move_turtle.py
 my_first_package/my_action_server.py
 my_first_package/my_first_node.py
