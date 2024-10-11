@@ -26,9 +26,10 @@ setup(
             'turtle_cmd_and_pose = my_first_package.turtle_cmd_and_pose:main',
             'my_service_server = my_first_package.my_service_server:main',
             'n_spawn_server = my_first_package.n_spawn:main',
-            'dist_turtle_action_serverr = my_first_package.my_action_server:main',
+            'my_action_server = my_first_package.my_action_server:main',
             'move_turtle_action_server = my_first_package.move_turtle:main',
             'user_defined_cmd = my_first_package.client_test:main',
+            'test_action_server = my_first_package.test_action_server:main'
         ],
     },
 )

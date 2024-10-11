@@ -26,6 +26,8 @@ class DistTurtleServer(Node):
             'move_turtle',
             self.execute_callback
         )
+        print("Go distance!!")
+        self.get_logger().info("Go distance!!")
     def execute_callback(self, goal_handle):
         feedback_msg = DisTurtle.Feedback()
         
@@ -38,7 +40,7 @@ class DistTurtleServer(Node):
             feedback_msg.remained_dist = goal_handle.request.dist - self.total_dist
             goal_handle.publish_feedback(feedback_msg)
             self.publisher.publish(msg)
-            time.sleep(0.1)
+            time.sleep(1)
             
             if feedback_msg.remained_dist < 0.2:
                 break
@@ -63,6 +65,7 @@ class DistTurtleServer(Node):
             self.is_first_time = False
         move_dist = math.sqrt((self.current_pose.x - self.previous_pose.x)**2
                               + (self.current_pose.y - self.previous_pose.y)**2)
+        self.previous_pose = self.current_pose
         return move_dist
     
 class TurtleSub_Action(TurtlesimSubscriber):
