@@ -142,3 +142,38 @@ entry_points={
 ```
 ros2 run my_package user_defined_cmd
 ```
+
+
+
+<details>
+<summary>사용자 정의 서비스 작성 요령</summary>
+
+
+> 파일명.py
+```
+def __init__(self):
+    super().__init__('노드명')
+    self.server = self.create_service(
+        import한 메시지타입,
+        '서비스명',
+        self.콜백함수
+    )
+```
+
+> setup.py
+```
+entry_points={
+    'console_scripts': [
+        '실행명' = 패키지명.파일명:main',
+    ],
+```
+
+> 서비스 서버 실행
+```
+ros2 run <패키지명> <실행명>
+```
+> 서비스 콜
+```
+ros2 service call <서비스명> <메시지타입> <인자>
+```
+</details>
