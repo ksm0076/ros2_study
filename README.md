@@ -96,6 +96,7 @@ service list -t 의 결과
 ```
 
 > client_test.py
+
 > 메시지 타입을 사용하기 위한 import
 ```
 form turtlesim.srv import TeleportAbsolute
