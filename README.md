@@ -207,7 +207,11 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 <exec_depend>rosidl_default_runtime</exec_depend>
 <member_of_group>rosidl_interface_packages</member_of_group>
 ```
-명령어로 확인 (colcon build 잊지 말기)
+명령어로 확인 (변화 있으면 colcon build 잊지 않기)
 ```
 ros2 interface show my_first_package_msgs/msg/CmdAndPoseVel
 ```
+
+내가 정의한 메시지 사용해보기 : msg 파일, [turtle_cmd_and_pose.py](https://github.com/ksm0076/ros2_study/blob/main/src/my_first_package/my_first_package/turtle_cmd_and_pose.py)
+
+내가 정의한 서비스 메시지 사용해보기: srv파일, [n_spawn.py](https://github.com/ksm0076/ros2_study/blob/main/src/my_first_package/my_first_package/n_spawn.py)
