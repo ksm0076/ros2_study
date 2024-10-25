@@ -177,3 +177,37 @@ ros2 run <패키지명> <실행명>
 ros2 service call <서비스명> <메시지타입> <인자>
 ```
 </details>
+
+
+## 7. 메시지 정의
+> ament_cmake로 생성한 my_first_package_msgs 패키지
+
+msg 폴더 생성 -> 소스코드 만들기 -> package.xml, CMakeList.txt 파일 수정
+> ros2_study/src/my_first_package_msgs/msg/CmdAndPoseVel.msg
+```
+float32 cmd_vel_linear
+float32 cmd_vel_angular
+
+float32 pose_x
+float32 pose_y
+float32 linear_vel
+float32 angular_vel
+```
+> CMakeList.txt
+```
+find_package(rosidl_default_generators REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/CmdAndPoseVel.msg"
+)
+```
+> package.xml
+```
+<build_depend>rosidl_default_generators</build_depend>
+<exec_depend>rosidl_default_runtime</exec_depend>
+<member_of_group>rosidl_interface_packages</member_of_group>
+```
+명령어로 확인 (colcon build 잊지 말기)
+```
+ros2 interface show my_first_package_msgs/msg/CmdAndPoseVel
+```
