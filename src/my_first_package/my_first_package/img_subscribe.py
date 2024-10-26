@@ -9,15 +9,16 @@ class ImageSubscriber(Node):
         super().__init__('image_subscriber')
         self.subscription = self.create_subscription(
             Image,
-            'image_topic',  # 구독할 이미지 토픽
+            # robot's camera topic /camera/color/image_raw
+            'image_topic',  # image topic to subscribe
             self.listener_callback,
             10)
         self.bridge = CvBridge()
 
     def listener_callback(self, msg):
-        # ROS 이미지 메시지를 OpenCV 이미지로 변환
+        # ROS image masage -> convert -> OpenCV image
         cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
-        # 수신한 이미지를 화면에 표시
+        # show image
         cv2.imshow("Received Image", cv_image)
         cv2.waitKey(1)
 
