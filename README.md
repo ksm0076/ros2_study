@@ -215,3 +215,89 @@ ros2 interface show my_first_package_msgs/msg/CmdAndPoseVel
 내가 정의한 메시지 사용해보기 : msg 파일, [turtle_cmd_and_pose.py](https://github.com/ksm0076/ros2_study/blob/main/src/my_first_package/my_first_package/turtle_cmd_and_pose.py)
 
 내가 정의한 서비스 메시지 사용해보기: srv파일, [n_spawn.py](https://github.com/ksm0076/ros2_study/blob/main/src/my_first_package/my_first_package/n_spawn.py)
+
+
+## 8. 토픽으로 이미지 전달하기
+OpenCV와 CvBridge 사용
+
+이미지 타입은 이미 sensor_msgs/Image 정의되어있음
+
+> img_publish.py
+```
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import Image
+from cv_bridge import CvBridge
+import cv2
+
+class ImagePublisher(Node):
+    def __init__(self):
+        super().__init__('image_publisher')
+        self.publisher_ = self.create_publisher(Image, 'image_topic', 10)
+        self.timer = self.create_timer(0.5, self.timer_callback)
+        self.bridge = CvBridge()
+        self.image_path = "/home/ksm/ros2_study/test.jpg"  # 전달할 이미지 파일 경로
+        self.image = cv2.imread(self.image_path)  # OpenCV로 이미지 로드
+        
+        if self.image is None:
+            self.get_logger().error(f"Failed to load image at path: {self.image_path}")
+        else:
+            self.get_logger().info(f"Successfully loaded image at path: {self.image_path}")
+
+    def timer_callback(self):
+        # OpenCV 이미지를 ROS 이미지 메시지로 변환
+        ros_image = self.bridge.cv2_to_imgmsg(self.image, "bgr8")
+        self.publisher_.publish(ros_image)
+        self.get_logger().info('Publishing image')
+
+def main(args=None):
+    rclpy.init(args=args)
+    image_publisher = ImagePublisher()
+    rclpy.spin(image_publisher)
+    image_publisher.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+> img_subscribe.py
+```
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import Image
+from cv_bridge import CvBridge
+import cv2
+
+class ImageSubscriber(Node):
+    def __init__(self):
+        super().__init__('image_subscriber')
+        self.subscription = self.create_subscription(
+            Image,
+            'image_topic',  # 구독할 이미지 토픽
+            self.listener_callback,
+            10)
+        self.bridge = CvBridge()
+
+    def listener_callback(self, msg):
+        # ROS 이미지 메시지를 OpenCV 이미지로 변환
+        cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
+        # 수신한 이미지를 화면에 표시
+        cv2.imshow("Received Image", cv_image)
+        cv2.waitKey(1)
+
+def main(args=None):
+    rclpy.init(args=args)
+    image_subscriber = ImageSubscriber()
+    rclpy.spin(image_subscriber)
+    image_subscriber.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+> setup.py의 entry points 수정 잊지 않기
+```
+ros2 run my_first_package img_publish
+ros2 run my_first_package img_subscribe
+```
