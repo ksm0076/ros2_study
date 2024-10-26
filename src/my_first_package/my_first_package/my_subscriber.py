@@ -15,7 +15,7 @@ class TurtlesimSubscriber(Node):
             10)
         self.create_timer(1, self.time_callback) # If you want a timer
     
-    def callback(self, msg):
+    def callback(self, msg):        
         self.x = msg.x
         self.y = msg.y
         

@@ -29,7 +29,9 @@ setup(
             'my_action_server = my_first_package.my_action_server:main',
             'move_turtle_action_server = my_first_package.move_turtle:main',
             'user_defined_cmd = my_first_package.client_test:main',
-            'test_action_server = my_first_package.test_action_server:main'
+            'test_action_server = my_first_package.test_action_server:main',
+            'img_publish = my_first_package.img_publish:main',
+            'img_subscribe = my_first_package.img_subscribe:main',
         ],
     },
 )
