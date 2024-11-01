@@ -186,6 +186,37 @@ ros2 service call <서비스명> <메시지타입> <인자>
 ```
 </details>
 
+<details>
+<summary>중첩된 메시지 구조</summary>
+    
+```
+ros2 interface show nav_msgs/msg/Odometry
+# 출력
+std_msgs/Header header
+string child_frame_id
+geometry_msgs/PoseWithCovariance pose
+geometry_msgs/TwistWithCovariance twist
+```
+```
+ros2 interface show geometry_msgs/msg/PoseWithCovariance
+# 출력
+geometry_msgs/Pose pose
+float64[36] covariance
+```
+```
+ros2 interface show geometry_msgs/msg/Pose
+# 출력
+geometry_msgs/Point position
+geometry_msgs/Quaternion orientation
+```
+msg -> nav_msgs/msg/Odometry
+
+msg.pose -> PoseWithCovariance
+
+msg.pose.pose -> Pose
+
+msg.pose.pose.position -> Point
+</details>
 
 ## 7. 메시지 정의
 > ament_cmake로 생성한 my_first_package_msgs 패키지
