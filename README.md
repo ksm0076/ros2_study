@@ -1,5 +1,7 @@
 # ROS2 기본
-
+```
+source /opt/ros/humble/setup.bash;
+```
 ## 1. 노드
 ros에서 다루는 프로세스
 ```
