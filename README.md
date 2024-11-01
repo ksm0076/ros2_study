@@ -138,6 +138,12 @@ entry_points={
     },
 ```
 
+> 빌드
+```
+colcon build
+source install/setup.bash
+```
+
 > 서비스 요청
 ```
 ros2 run my_package user_defined_cmd
